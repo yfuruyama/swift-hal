@@ -24,6 +24,16 @@ public class HALResource : JSON {
         return HALLink(link)
     }
     
+    public func links() -> [String: HALLink] {
+        var links = [String: HALLink]()
+        if let dict = self["_links"].asDictionary {
+            for (k, v) in dict {
+                links[k] = HALLink(v)
+            }
+        }
+        return links
+    }
+    
     public func embedded() -> [HALResource]? {
         let embedded = self["_embedded"].asArray;
         return embedded?.map { e in HALResource(e) }
