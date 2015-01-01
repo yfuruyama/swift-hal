@@ -10,6 +10,6 @@ Usage
 ---
 ```swift
 let json = "{\"_links\":{\"self\": { \"href\": \"/orders\" }}}"
-let hal = HAL.parse(json)
-let selfHref = hal.links("self").href()
+let hal: HALResource = HAL.parse(json)
+let selfHref: String? = hal.links("self").href()
 ```
