@@ -6,31 +6,47 @@
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>79BC09A0-6A56-49C5-A679-4BFEA93CF562</string>
+	<key>IDESourceControlProjectName</key>
+	<string>hal</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>6A4B31B57E14E5921DD94BCBC053E4A99028AD01</key>
 		<string>github.com:dankogai/swift-json.git</string>
+		<key>CC4D5C38B2107B644CD71F17CE63DA83D0E040BE</key>
+		<string>github.com:addsict/swift-hal.git</string>
 	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>hal.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>6A4B31B57E14E5921DD94BCBC053E4A99028AD01</key>
-		<string>swift-json/</string>
+		<string>../..swift-json</string>
+		<key>CC4D5C38B2107B644CD71F17CE63DA83D0E040BE</key>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>github.com:dankogai/swift-json.git</string>
+	<string>github.com:addsict/swift-hal.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>6A4B31B57E14E5921DD94BCBC053E4A99028AD01</string>
+	<string>CC4D5C38B2107B644CD71F17CE63DA83D0E040BE</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CC4D5C38B2107B644CD71F17CE63DA83D0E040BE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>swift-hal</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>6A4B31B57E14E5921DD94BCBC053E4A99028AD01</string>
 			<key>IDESourceControlWCCName</key>
-			<string>swift-json</string>
+			<string>swift-halswift-json</string>
 		</dict>
 	</array>
 </dict>

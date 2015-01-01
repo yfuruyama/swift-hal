@@ -8,17 +8,38 @@
 
 import Foundation
 
-public class HAL : JSON {
-    public func links() -> HAL {
-        return HAL(self["_links"])
+public class HAL {
+    public class func parse(string: String) -> HALResource {
+        return HALResource(JSON.parse(string))
+    }
+}
+
+public class HALResource : JSON {
+    override init(_ json: JSON) {
+        super.init(json)
     }
     
-    public func links(key:String) -> String? {
-        return self["_links"][key].asString;
+    public func links(key: String) -> HALLink {
+        let link = JSON(self["_links"][key])
+        return HALLink(link)
     }
     
-    public func embedded() -> [HAL]? {
+    public func embedded() -> [HALResource]? {
         let embedded = self["_embedded"].asArray;
-        return embedded?.map { e in HAL(e) }
+        return embedded?.map { e in HALResource(e) }
+    }
+}
+
+public class HALLink : JSON {
+    override init(_ json: JSON) {
+        super.init(json)
+    }
+    
+    public func href() -> String? {
+        return self["href"].asString
+    }
+    
+    public func templated() -> Bool? {
+        return self["templated"].asBool
     }
 }

@@ -33,4 +33,10 @@ class halTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    func testHref() {
+        let json = "{\"_links\":{\"self\": { \"href\": \"/orders\" }}}"
+        let hal = HAL.parse(json)
+        XCTAssertEqual(hal.links("self").href()!, "/orders")
+    }
 }
