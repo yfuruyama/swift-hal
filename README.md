@@ -11,5 +11,9 @@ Usage
 ```swift
 let json = "{\"_links\":{\"self\": { \"href\": \"/orders\" }}}"
 let hal: HALResource = HAL.parse(json)
-let selfHref: String? = hal.links("self").href()
+let href: String? = hal.link("self")!.href()
 ```
+
+LICENSE
+---
+MIT License
