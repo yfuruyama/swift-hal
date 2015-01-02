@@ -37,7 +37,7 @@ class halTests: XCTestCase {
     func testLink() {
         let json = "{\"_links\":{\"self\": { \"href\": \"/orders\" }}}"
         let hal = HAL.parse(json)
-        XCTAssertEqual(hal.links("self").href()!, "/orders")
+        XCTAssertEqual(hal.links("self")!.href()!, "/orders")
     }
     
     func testLinks() {

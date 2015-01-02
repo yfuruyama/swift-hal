@@ -19,9 +19,12 @@ public class HALResource : JSON {
         super.init(json)
     }
     
-    public func links(key: String) -> HALLink {
-        let link = JSON(self["_links"][key])
-        return HALLink(link)
+    public func links(key: String) -> HALLink? {
+        if self["_links"][key].asDictionary != nil {
+            return HALLink(self["_links"][key])
+        } else {
+            return nil
+        }
     }
     
     public func links() -> [String: HALLink] {
@@ -49,7 +52,10 @@ public class HALLink : JSON {
         return self["href"].asString
     }
     
-    public func templated() -> Bool? {
-        return self["templated"].asBool
+    public func templated() -> Bool {
+        if let templated = self["templated"].asBool {
+            return templated
+        }
+        return false
     }
 }
