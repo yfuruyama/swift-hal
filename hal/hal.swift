@@ -19,22 +19,33 @@ public class HALResource : JSON {
         super.init(json)
     }
     
-    public func links(key: String) -> HALLink? {
-        if self["_links"][key].asDictionary != nil {
-            return HALLink(self["_links"][key])
+    public func link(key: String) -> HALLink? {
+        let links = self.links(key)
+        return links.count > 0 ? links[0] : nil
+    }
+    
+    public func links(key: String) -> [HALLink] {
+        if let links = self["_links"][key].asArray {
+            return links.map { l in HALLink(l) }
+        } else if !self["_links"][key].isError {
+            return [HALLink(self["_links"][key])]
         } else {
-            return nil
+            return []
         }
     }
     
-    public func links() -> [String: HALLink] {
-        var links = [String: HALLink]()
+    public func links() -> [String: AnyObject] {
+        var allLinks = [String: AnyObject]()
         if let dict = self["_links"].asDictionary {
-            for (k, v) in dict {
-                links[k] = HALLink(v)
+            for (k: String, v: JSON) in dict {
+                if let links = v.asArray {
+                    allLinks[k] = links.map { l in HALLink(l) }
+                } else {
+                    allLinks[k] = HALLink(v)
+                }
             }
         }
-        return links
+        return allLinks
     }
     
     public func embedded() -> [HALResource]? {
@@ -57,5 +68,29 @@ public class HALLink : JSON {
             return templated
         }
         return false
+    }
+    
+    public func type() -> String? {
+        return self["type"].asString
+    }
+    
+    public func deprecation() -> String? {
+        return self["deprecation"].asString
+    }
+    
+    public func name() -> String? {
+        return self["name"].asString
+    }
+    
+    public func profile() -> String? {
+        return self["profile"].asString
+    }
+    
+    public func title() -> String? {
+        return self["title"].asString
+    }
+    
+    public func hreflang() -> String? {
+        return self["hreflang"].asString
     }
 }
