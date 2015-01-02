@@ -49,8 +49,10 @@ public class HALResource : JSON {
     }
     
     public func embedded() -> [HALResource]? {
-        let embedded = self["_embedded"].asArray;
-        return embedded?.map { e in HALResource(e) }
+        if let embedded = self["_embedded"].asArray {
+            return embedded.map { e in HALResource(e) }
+        }
+        return nil
     }
 }
 
