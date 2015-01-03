@@ -48,6 +48,31 @@ public class HALResource : JSON {
         return allLinks
     }
     
+    public func hasCuries() -> Bool {
+        if let curries = self["_links"]["curies"].asArray {
+            return curries.count > 0 ? true : false
+        }
+        return false
+    }
+    
+    public func curie(key: String) -> HALLink? {
+        if hasCuries() {
+            for link: JSON in self["_links"]["curies"].asArray! {
+                if link["name"].asString == key {
+                    return HALLink(link)
+                }
+            }
+        }
+        return nil
+    }
+    
+    public func curies() -> [HALLink] {
+        if hasCuries() {
+            return self["_links"]["curies"].asArray!.map { l in HALLink(l) }
+        }
+        return []
+    }
+    
     public func embedded() -> [HALResource]? {
         if let embedded = self["_embedded"].asArray {
             return embedded.map { e in HALResource(e) }
