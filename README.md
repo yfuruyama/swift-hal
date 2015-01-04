@@ -16,7 +16,6 @@ let href: String? = hal.link("self")!.href()
 
 Interface
 ---
-```
 - HAL
   - `class func parse(string: String) -> HALResource`: parse a HAL-JSON string
 - HALResource
@@ -36,7 +35,6 @@ Interface
   - `func profile() -> String?`: get "profile" property of link object.
   - `func title() -> String?`: get "title" property of link object.
   - `func hreflang() -> String?`: get "hreflang" property of link object.
-```
 
 LICENSE
 ---
